@@ -11,7 +11,7 @@ from tkinter import *
 
 def bienvenida():
     Bienvenida = Label(text= "Bienvenido a calcular campos", font="Times 20")
-    Bienvenida.grid(row=0, column=100)
+    Bienvenida.grid(row=0, column=1)
 
 def abrirventana():
     label= tk.Label(text="Intesidad de campo", font= "Cambria 15")
@@ -20,13 +20,13 @@ def abrirventana():
     entrada.grid(row=2,column=0)
     
     label2= tk.Label(text="Velocidad de particula", font= "Cambria 15")
-    label2.grid(row=1,column=100)
+    label2.grid(row=1,column=1)
     entrada2= tk.Entry(width=10, font= "Cambria 12")
-    entrada2.grid(row=2,column=100)
+    entrada2.grid(row=2,column=1)
 
 def tipo():
     label3= tk.Label(text="Tipo de particula", font= "Cambria 15")
-    label3.grid(row=1, column=150)
+    label3.grid(row=1, column=2, columnspan=2)
      # electrón, positrón, protón, neutrón, partícula alfa, núcleo de deuterio, muón,
     TIP= [
         ("Proton","1"),
@@ -41,14 +41,14 @@ def tipo():
     x=2
     for text, mode in TIP:
         b= Radiobutton(text=text, variable=caracteristica, value=mode,font= "Cambria 12")
-        b.grid(row=x,column=150)
+        b.grid(row=x,column=2)
         x=x+1
-    #label4= Label(text=caracteristica.get())
-    #label4.grid(row=2, column=200)
+   
 
 def botonsimulacion():
-    aceptar = Button(text="Calcular", pady=10, font="Cambria 10")
-    aceptar.grid(row=15, column=680)
+    aceptar = Button(text="Calcular", font="Cambria 10", anchor=S)
+    aceptar.grid(row=10, column=1)
+    #aceptar.anchor()   #aceptar.grid(row=15, column=680)  pady=10,
     
 
     
