@@ -9,7 +9,7 @@ from tkinter import messagebox
 import modulos as md
 
 raiz=Tk()
-"raiz.config(bg=white)"
+#raiz.config(bg=white)"
 raiz.geometry("800x600")
 raiz.title("Campo Eléctrico")
 
