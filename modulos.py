@@ -6,8 +6,6 @@ Carne:
 """
 import tkinter as tk
 from tkinter import *
-"from tkinter import messagebox"
-
 
 def bienvenida():
     Bienvenida = Label(text= "Bienvenido a calcular campos", font="Times 20")
@@ -24,38 +22,40 @@ def abrirventana():
     entrada2= tk.Entry(width=10, font= "Cambria 12")
     entrada2.grid(row=2,column=1)
 
+
+
 def tipo():
     label3= tk.Label(text="Tipo de particula", font= "Cambria 15")
     label3.grid(row=1, column=2, columnspan=4)
      # electrón, positrón, protón, neutrón, partícula alfa, núcleo de deuterio, muón,
     TIP= [
-        ("Proton","1"),
-        ("Electron","2"),
-        ("Neutron","3"),
-        ("Positrón","4"),
-        ("Partícula Alfa","5"),
-        ("Nucleo de Deuterio","6"),
+        ("Proton",1),
+        ("Electron",2),
+        ("Neutron",3),
+        ("Positrón",4),
+        ("Partícula Alfa",5),
+        ("Nucleo de Deuterio",6),
     ]
+    
     caracteristica= IntVar()
-    caracteristica.set("1")
+    caracteristica.set(1)
+    def getchoice():
+        print(caracteristica.get())
     x=2
     y=2
     z=2
     for text, mode in TIP:
-        b= Radiobutton(text=text, variable=caracteristica, value=mode,font= "Cambria 12")
+        b= Radiobutton(text=text,font= "Cambria 12",value=mode,variable=caracteristica,command=getchoice)
         b.grid(row=x,column=y)
         y=((-1)**z)+y
         if y == 2:
             x=x+1
         z=z+1
-        
-        
-        
-
+    
+    
 def botonsimulacion():
     aceptar = Button(text="Calcular", font="Cambria 10", anchor=S)
-    aceptar.grid(row=10, column=1)
-    #aceptar.anchor()   #aceptar.grid(row=15, column=680)  pady=10,
+    aceptar.grid(row=7, column=1) 
     
 
     
