@@ -8,11 +8,9 @@ import tkinter as tk
 from tkinter import *
 
 carga=0
-suma=0
+masa=0
 
-def bienvenida():
-    Bienvenida = Label(text= "Bienvenido a calcular campos", font="Times 20")
-    Bienvenida.grid(row=0, column=1, columnspan=6)
+
 # Label es lo que se muestra en pantalla,(texto) y donde dice Entry es para el input
 def abrirventana():
     label= tk.Label(text="Intesidad de campo", font= "Cambria 13")
@@ -31,24 +29,31 @@ def tipo():
     label3.grid(row=1, column=2, columnspan=4)
      # electrón, positrón, protón, neutrón, partícula alfa, núcleo de deuterio, muón,
     TIP= [
-        ("Proton",1,3),
-        ("Electron",2,4),
-        ("Neutron",3,5),
-        ("Positrón",4,6),
-        ("Partícula Alfa",5,5),
-        ("Nucleo de Deuterio",6,8),
+        ("Proton",1.673E-27,1.6E-19),
+        ("Electron",9.11E-31,-1.6E-19),
+        ("Neutron",1.675E-27,0),
+        ("Partícula Alfa",6.64E-27,3.2E-19),
+        ("Núcleo de Deuterio",3.34E-27,1.602E-19),
+        ("Tau", 3.16E-27,-1.6E-19),
+        ("Núcleo de Tritio",5.027E-27,1.6E-19),
+        ("Positron",9.1E-31,1.6E-19),
     ]
     
-    caracteristica= IntVar()
+    caracteristica= DoubleVar()
     caracteristica.set(1)
     def record():# este metodo es para obtener el tercer valor de la lista(que en realidad seria la masa de la particula)
         for t,m,y in TIP:
             if m == caracteristica.get():
                 return(y)
+            
+    
     #Esto solo es para mostrar que si me quedó () 
     def getchoice():
-        print("Su carga es : "+str(record()))
-        print("Su masa es : "+str(caracteristica.get()))
+        carga= str(record())
+        masa= str(caracteristica.get())
+        print("Su carga es : "+carga)
+        print("Su masa es : "+ masa)
+        
     x=2
     y=2
     z=2
@@ -59,11 +64,14 @@ def tipo():
         if y == 2:
             x=x+1
         z=z+1
-    
+def fin():
+    fin= tk.Label(text="BOOM BITCH", font= "Cambria 15")
+    fin.grid(row=10, column=2, columnspan=4)
     
 def botonsimulacion():
-    aceptar = Button(text="Calcular", font="Cambria 10", anchor=S)
+    aceptar = Button(text="Calcular", font="Cambria 10", anchor=S, command=fin)
     aceptar.grid(row=7, column=1)
+    
     
 
     
