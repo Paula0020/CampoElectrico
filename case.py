@@ -12,11 +12,10 @@ raiz=Tk()
 #raiz.config(bg=white)"
 raiz.geometry("700x400")
 raiz.title("Simulación de campo eléctrico 2020")
-#raiz.configure(width=200,height=100)
-#raiz.grid(padx=600, pady=600)
+Bienvenida = Label(raiz,text= "Bienvenido a calcular campos", font="Times 20")
+Bienvenida.grid(row=0, column=1, columnspan=6)
 
 
-md.bienvenida()
 md.abrirventana()
 md.tipo()
 md.botonsimulacion()
