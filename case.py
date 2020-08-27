@@ -15,6 +15,7 @@ raiz.title("Simulación de campo eléctrico 2020")
 Bienvenida = Label(raiz,text= "Bienvenido a calcular campos", font="Times 20")
 Bienvenida.grid(row=0, column=1, columnspan=6)
 
+"Hola mapa ya se usar git en pycharm"
 
 md.abrirventana()
 md.tipo()
