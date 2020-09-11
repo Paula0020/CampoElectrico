@@ -2,7 +2,7 @@
 María Paula Valdés
 Hector Aaron Pivaral
 Carné: 19146
-Carne:
+Carne: 19640
 """
 import tkinter as tk
 from tkinter import *
@@ -71,6 +71,8 @@ def fin():
 def botonsimulacion():
     aceptar = Button(text="Calcular", font="Cambria 10", anchor=S, command=fin)
     aceptar.grid(row=7, column=1)
+
+
     
     
 
