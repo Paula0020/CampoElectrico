@@ -2,7 +2,7 @@
 María Paula Valdés
 Hector Aaron Pivaral
 Carné: 19146
-Carne:
+Carne: 19640
 """
 from tkinter import *
 from tkinter import messagebox
