@@ -12,11 +12,20 @@ masa=0
 
 
 # Label es lo que se muestra en pantalla,(texto) y donde dice Entry es para el input
-def abrirventana():
+def Intensidad():
     label= tk.Label(text="Intesidad de campo", font= "Cambria 13")
     label.grid(row=1,column=0)
     entrada= tk.Entry(width=10, font= "Cambria 12")
     entrada.grid(row=2,column=0)
+    caracteristica= DoubleVar()
+    caracteristica.set(1)
+    
+    a= Radiobutton(text="j",font= "Cambria 12",value=1,variable=caracteristica)
+    a.grid(row=3,column=0)
+    a= Radiobutton(text="-j",font= "Cambria 12",value=-1,variable=caracteristica)
+    a.grid(row=4,column=0)
+
+def velocidad():
     
     label2= tk.Label(text="Velocidad de particula", font= "Cambria 13")
     label2.grid(row=1,column=1)
@@ -58,7 +67,7 @@ def tipo():
     y=2
     z=2
     for name, mode,extra in TIP:#es para asignar valores a los botone[command es lo que hace cuando apachas el boton]
-        b= Radiobutton(text=name,font= "Cambria 12",value=mode,selectcolor="lightblue",variable=caracteristica,command=getchoice)
+        b= Radiobutton(text=name,font= "Cambria 12",value=mode,background="lightblue",indicator=0, width=15,variable=caracteristica,command=getchoice)
         b.grid(row=x,column=y)
         y=((-1)**z)+y#esto solo es configuracion de imagen, no afecta los valores que se tienen
         if y == 2:
