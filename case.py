@@ -12,12 +12,13 @@ raiz=Tk()
 #raiz.config(bg=white)"
 raiz.geometry("700x400")
 raiz.title("Simulación de campo eléctrico 2020")
-Bienvenida = Label(raiz,text= "Bienvenido a calcular campos", font="Times 20")
+Bienvenida = Label(raiz,text= "Simulación de campo eléctrico 2020", font="Times 20")
 Bienvenida.grid(row=0, column=1, columnspan=6)
 
 "Hola mapa ya se usar git en pycharmmm"
 
-md.abrirventana()
+md.Intensidad()
+md.velocidad()
 md.tipo()
 md.botonsimulacion()
 raiz.mainloop()
