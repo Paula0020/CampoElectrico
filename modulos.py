@@ -58,14 +58,14 @@ def tipo():
     y=2
     z=2
     for name, mode,extra in TIP:#es para asignar valores a los botone[command es lo que hace cuando apachas el boton]
-        b= Radiobutton(text=name,font= "Cambria 12",value=mode,variable=caracteristica,command=getchoice)
+        b= Radiobutton(text=name,font= "Cambria 12",value=mode,selectcolor="lightblue",variable=caracteristica,command=getchoice)
         b.grid(row=x,column=y)
         y=((-1)**z)+y#esto solo es configuracion de imagen, no afecta los valores que se tienen
         if y == 2:
             x=x+1
         z=z+1
 def fin():
-    fin= tk.Label(text="BOOM BITCH", font= "Cambria 15")
+    fin= tk.Label(text="Resultado", font= "Cambria 15")
     fin.grid(row=10, column=2, columnspan=4)
     
 def botonsimulacion():
