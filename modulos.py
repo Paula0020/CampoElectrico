@@ -6,22 +6,21 @@ Carne: 19640
 """
 import tkinter as tk
 from tkinter import *
+from ERROR import *
 
 carga=0
 masa=0
 
 
-# Label es lo que se muestra en pantalla,(texto) y donde dice Entry es para el input
 #INTENSIDAD
 label= tk.Label(text="Intesidad de campo", font= "Cambria 13")
 label.grid(row=1,column=0)
 entrada= tk.Entry(width=10, font= "Cambria 12")
 entrada.grid(row=2,column=0)
-caracteristica= DoubleVar()
-caracteristica.set(1)
-    
-    
-a= Radiobutton(text="j",font= "Cambria 12",value=1,variable=caracteristica)
+
+vertical= DoubleVar()
+vertical.set(1)    
+a= Radiobutton(text="j",font= "Cambria 12",value=1,variable=vertical)
 a.grid(row=3,column=0)
 a= Radiobutton(text="-j",font= "Cambria 12",value=-1,variable=caracteristica)
 a.grid(row=4,column=0)
@@ -49,19 +48,11 @@ TIP= [
 caracteristica= DoubleVar()
 caracteristica.set(1)
     
-def record():# este metodo es para obtener el tercer valor de la lista(que en realidad seria la masa de la particula)
+def getchoice():
     for t,m,y in TIP:
         if m == caracteristica.get():
-            return(y)
-        
-    
-    #Esto solo es para mostrar que si me quedó () 
-def getchoice():
-    carga= str(record())
-    masa= str(caracteristica.get())
-    print("Su carga es : "+carga)
-    print("Su masa es : "+ masa)
-    
+            particulas(caracteristica.get(),y)
+            
 x=2
 y=2
 z=2
@@ -76,7 +67,8 @@ for name, mode,extra in TIP:#es para asignar valores a los botone[command es lo 
 def fin():
     fin= tk.Label(text="Resultado", font= "Cambria 15")
     fin.grid(row=10, column=2, columnspan=4)
-    print(entrada.get())
+    validateV_float(entrada)
+    print("wait")
     
 
 aceptar = Button(text="Calcular",font="Cambria 10", anchor=S, command=fin)
