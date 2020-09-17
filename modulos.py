@@ -22,7 +22,7 @@ vertical= DoubleVar()
 vertical.set(1)    
 a= Radiobutton(text="j",font= "Cambria 12",value=1,variable=vertical)
 a.grid(row=3,column=0)
-a= Radiobutton(text="-j",font= "Cambria 12",value=-1,variable=caracteristica)
+a= Radiobutton(text="-j",font= "Cambria 12",value=-1,variable=vertical)
 a.grid(row=4,column=0)
 #VELOCIDAD
     
@@ -67,8 +67,9 @@ for name, mode,extra in TIP:#es para asignar valores a los botone[command es lo 
 def fin():
     fin= tk.Label(text="Resultado", font= "Cambria 15")
     fin.grid(row=10, column=2, columnspan=4)
-    validateV_float(entrada)
-    print("wait")
+    validateV_float(entrada2)
+    validateI_float(entrada)
+    print("Resultado")
     
 
 aceptar = Button(text="Calcular",font="Cambria 10", anchor=S, command=fin)
