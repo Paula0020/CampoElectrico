@@ -13,6 +13,8 @@ velocidad=0
 Intensidad=0
 masa=0
 carga=0
+angulo=0
+verticalI=0
 
 def particulas(m,c):
     print(str(m))
@@ -37,5 +39,8 @@ def validateI_float(var):
     except:
         messagebox.showinfo(title="Cuidado", message="Datos no válidos")
 
+def Edata(IC,angle):
+    verticalI=IC
+    angulo=angle
     
 
