@@ -7,6 +7,11 @@ Carne: 19640
 from vpython import *
 from math import sin, cos, atan, degrees
 
+from matplotlib.pyplot import box
+from numpy import rate
+
+from vpython import *
+
 def aceleracionElec(ParticulaMasa, carga, campo):
     acelera = (carga*campo)/ParticulaMasa
     return acelera
@@ -20,42 +25,42 @@ def LagraFica():
 
     # Set up the display window
 
-    scene.background = color.white
-    scene.title = 'Projectile Motion'
-    scene.x = 0
-    scene.y = 0
-    scene.width = 1000
-    scene.height = 800
-    scene.range = 1
-    scene.center = vector(1, initialHeight, 0)
+    g.background = color.white
+    g.title = 'Projectile Motion'
+    g.x = 0
+    g.y = 0
+    g.width = 1000
+    g.height = 800
+    g.range = 1
+    g.center = vec(1, initialHeight, 0)
 
     # Creating obects
 
-    table = box(pos=vector(-1, initialHeight - 0.01, 0), size=vector(2,
+    table = box(pos=vec(-1, initialHeight - 0.01, 0), size=vec(2,
                                                                      0.01, 1), color=color.cyan)
 
-    ball = sphere(pos=vector(0, initialHeight, 0), radius=0.02,
+    ball = sphere(pos=vec(0, initialHeight, 0), radius=0.02,
                   color=color.green, make_trail=True)
 
-    floor = box(pos=vector(0, 0, 0), size=vector(5, 0.01, 1),
+    floor = box(pos=vec(0, 0, 0), size=vec(5, 0.01, 1),
                 color=color.red)
 
-    label1 = label(pos=vec(1, 0.7, 0), text='Current velocity vx: ')
-    label2 = label(pos=vec(1, 0.6, 0), text='Current velocity vy: ')
-    label3 = label(pos=vec(1, -0.4, 0), text='Distance: ')
-    label4 = label(pos=vec(1, -0.6, 0), text='Time: ')
-    label5 = label(pos=vec(1, -0.5, 0), text='Angle: ')
+    label1 = label4(pos=vec(1, 0.7, 0), text='Current velocity vx: ')
+    label2 = label4(pos=vec(1, 0.6, 0), text='Current velocity vy: ')
+    label3 = label4(pos=vec(1, -0.4, 0), text='Distance: ')
+    label4 = label4(pos=vec(1, -0.6, 0), text='Time: ')
+    label5 = label4(pos=vec(1, -0.5, 0), text='Angle: ')
 
     # Paramaters
 
     t = 0
     dt = 0.001
     g = -9.8  # m/s^2#Parametrrooooooooooooooooooooooooooooooooooooooooo
-    gravity = vector(0, g * dt, 0)
+    gravity = vec(0, g * dt, 0)
 
     # Velocity vector for ball:
 
-    ballv = vector(initialVelocity * cos(Angle * pi / 180), initialVelocity
+    ballv = vec(initialVelocity * cos(Angle * pi / 180), initialVelocity
                    * sin(Angle * pi / 180), 0)
 
     # Simulate event
@@ -91,5 +96,4 @@ def LagraFica():
 
         t += dt
 
-
-
+LagraFica()
