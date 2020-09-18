@@ -25,14 +25,14 @@ def LagraFica():
 
     # Set up the display window
 
-    g.background = color.white
-    g.title = 'Projectile Motion'
-    g.x = 0
-    g.y = 0
-    g.width = 1000
-    g.height = 800
-    g.range = 1
-    g.center = vec(1, initialHeight, 0)
+    scene.background = color.white
+    scene.title = 'Projectile Motion'
+    scene.x = 0
+    scene.y = 0
+    scene.width = 1000
+    scene.height = 800
+    scene.range = 1
+    scene.center = vec(1, initialHeight, 0)
 
     # Creating obects
 
