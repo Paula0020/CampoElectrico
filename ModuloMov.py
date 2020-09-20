@@ -18,7 +18,6 @@ def aceleracionElec(ParticulaMasa, carga, campo):
 
 def LagraFica():
 
-
     initialHeight = 0.25
     initialVelocity = 10#Parametrrooooooooooooooooooooooooooooooooooooooooo
     Angle = 0.5#Parametrrooooooooooooooooooooooooooooooooooooooooo
@@ -96,4 +95,4 @@ def LagraFica():
 
         t += dt
 
-LagraFica()
+#LagraFica()
