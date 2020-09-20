@@ -15,6 +15,7 @@ masa=0
 carga=0
 angulo=0
 verticalI=0
+placa=0
 
 def particulas(m,c):
     print(str(m))
@@ -22,12 +23,13 @@ def particulas(m,c):
     m= masa
     c=carga
 ##velocidad, Intensidad
-def validateVI_float(V,I,elevadoI, elevadoV,ang):
+def validateVI_float(V,I,elevadoI, elevadoV,ang,plac):
     new_value = V.get()
     new_value2= I.get()
     ElevaI= elevadoI.get()
     ElevaV= elevadoV.get()
     Al= ang.get()
+    pla= plac.get()
     try:
         new_value == float(new_value)
         ElevaV == float(ElevaV)
@@ -37,6 +39,8 @@ def validateVI_float(V,I,elevadoI, elevadoV,ang):
         Intensidad= float(new_value2)*(10**float(ElevaI))
         Al == float(Al)
         angulo= float(Al)
+        pla == float(pla)
+        placa =float(pla)
         print(str(velocidad)+"\n"+str(Intensidad)+"\n"+str(angulo))
     except:
         messagebox.showinfo(title="Cuidado", message="Datos no válidos")
