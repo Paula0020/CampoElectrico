@@ -24,7 +24,7 @@ label= Label(raiz,center,text="Intesidad de campo", font= "Cambria 12")
 label.grid(row=1,column=1)
 entrada= Entry(raiz,center,width=10, font= "Cambria 12")
 entrada.grid(row=2,column=1)
-Elevado1=Label(raiz,center,text="x10^", font= "Cambria 13")#Elevado
+Elevado1=Label(raiz,center,text="x10^ (N/C)", font= "Cambria 13")#Elevado
 Elevado1.grid(row=3,column=1)
 diez1= Entry(raiz,center,width=10, font= "Cambria 12")#texto
 diez1.grid(row=4,column=1)
@@ -41,7 +41,7 @@ label2= Label(raiz,F,text="Velocidad de particula", font= "Cambria 12")#magnitud
 label2.grid(row=1,column=3)
 entrada2= Entry(raiz,F,width=10, font= "Cambria 12")#Entrada de magnitud
 entrada2.grid(row=2,column=3)
-Elevado=Label(raiz,F,text="x10^", font= "Cambria 13")#Elevado
+Elevado=Label(raiz,F,text="x10^ (m/s)", font= "Cambria 13")#Elevado
 Elevado.grid(row=3,column=3)
 diez= Entry(raiz,F,width=10, font= "Cambria 12")#texto
 diez.grid(row=4,column=3)
@@ -49,6 +49,10 @@ Angle=Label(raiz,F,text="Coloque el ángulo en grados:", font= "Cambria 10")#Ele
 Angle.grid(row=5,column=3)
 diez2= Entry(raiz,F,width=10, font= "Cambria 12")#texto
 diez2.grid(row=6,column=3)
+##PLACA
+placa=Label(raiz,F,text="Tamaño de placa(m):", font= "Cambria 11").grid(row=7,column=1)
+long= Entry(raiz,F,width=10, font= "Cambria 12")
+long.grid(row=8,column=1)
 ##TIPO
 label3= Label(raiz,text="Tipo de particula", font= "Cambria 15")
 label3.grid(row=1, column=5, columnspan=4)
@@ -86,7 +90,7 @@ for name, mode,extra in TIP:#es para asignar valores a los botone[command es lo 
 def fin():
     fin= Label(raiz,text="Resultado", font= "Cambria 15")
     fin.grid(row=10, column=2, columnspan=4)
-    validateVI_float(entrada2,entrada,diez1,diez,diez2)
+    validateVI_float(entrada2,entrada,diez1,diez,diez2,long)
     print("Resultado")
     
 aceptar = Button(raiz,text="Calcular",font="Cambria 14", command=fin)
