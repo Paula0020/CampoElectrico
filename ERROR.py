@@ -32,20 +32,32 @@ def validateVI_float(V,I,elevadoI, elevadoV,ang,plac):
     pla= plac.get()
     try:
         new_value == float(new_value)
-        ElevaV == float(ElevaV)
-        velocidad = float(new_value)*(10**float(ElevaV))
+        ElevaV == float(ElevaV)   
         new_value2== float(new_value2)
         ElevaI == float(ElevaI)
-        Intensidad= float(new_value2)*(10**float(ElevaI))
         Al == float(Al)
-        angulo= float(Al)
         pla == float(pla)
-        placa =float(pla)
-        print(str(velocidad)+"\n"+str(Intensidad)+"\n"+str(angulo))
     except:
         messagebox.showinfo(title="Cuidado", message="Datos no válidos")
-
+    global velocidad
+    global Intensidad
+    global angulo
+    global placa
+    velocidad = float(new_value)*(10**float(ElevaV))
+    Intensidad= float(new_value2)*(10**float(ElevaI))
+    angulo= float(Al)
+    placa =float(pla)
+    
+def luz():
+    if velocidad<=(10**8):
+        print(velocidad)
+        return(True)
+    else:
+        messagebox.showinfo(title="Cuidado", message="La velocidad no puede ser mayor que la luz")
+        return(False)
+    
 def Edata(IC):
+    global verticalI
     verticalI=IC
     
 
