@@ -16,7 +16,7 @@ def aceleracionElec(ParticulaMasa, carga, campo):
     acelera = (carga*campo)/ParticulaMasa
     return acelera
 
-def LagraFica():
+def LagraFica(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
     scene2 = canvas(title='Charged Particle in Electric Field', width=1000, height=800, center=vector(0, 0, 0),
                     align="left",
                     background=vector(1, 1, 1))
@@ -25,9 +25,9 @@ def LagraFica():
 
     Graph_MovElec = gcurve(graph=Grafica1, color=color.blue)
 
-    AceleracionElectrica = -98000000000  # 9.8  # Aqui cabal se pone el valor de la aceleracion
-    initialVelocity = 12000  # 12# Aqui cabal se pone el valor de la rapidez
-    Angle = 20  # Aqui cabal se pone el valor del angulo
+    AceleracionElectrica = -ACELERACIONELECTRICA  # 9.8  # Aqui cabal se pone el valor de la aceleracion
+    initialVelocity = VELCOIDAD  # 12# Aqui cabal se pone el valor de la rapidez
+    Angle = ANGULO  # Aqui cabal se pone el valor del angulo
     # TamañoDePlaca = 50  # Aqui cabala se pone el valor que el usuario ingreso
     # TamañoDePlacaE = box(pos=vector(TamañoDePlaca / 2, 0, 0), size=vector(TamañoDePlaca, 0.10, 0), color=color.blue)
 
