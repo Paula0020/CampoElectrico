@@ -40,7 +40,7 @@ def LagraFica(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
 
     t = 0
     dt = 0.0000000002
-
+    
     gravity = vector(0, AceleracionElectrica * dt, 0)
     Particlev = vector(initialVelocity * cos(Angle * pi / 180), initialVelocity
                        * sin(Angle * pi / 180), 0)
