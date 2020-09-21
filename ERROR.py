@@ -15,7 +15,6 @@ Intensidad=0
 masa=0
 carga=0
 angulo=0
-verticalI=0
 placa=0
 aceleracion=0
 
@@ -64,7 +63,8 @@ def graficar():
         graph.LagraFica(aceleracion,velocidad,angulo)
         
 def Edata(IC):
-    global verticalI
-    verticalI=IC
+    global Intensidad
+    Intensidad= IC*Intensidad
+
     
 
