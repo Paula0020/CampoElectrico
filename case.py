@@ -13,7 +13,7 @@ raiz=Tk()
 raiz.geometry("700x400")
 raiz.title("Simulación de campo eléctrico 2020")
 Bienvenida = Label(raiz,text= "Simulación de campo eléctrico 2020", font="Times 20")
-Bienvenida.grid(row=0, column=1, columnspan=6)
+Bienvenida.grid(row=0, column=1,columnspan=6)
 
 carga=0
 masa=0
@@ -67,7 +67,7 @@ TIP= [
     ("Núcleo de Tritio",5.027E-27,1.6E-19),
     ("Positron",9.1E-31,1.6E-19),
     ]
-    
+
 caracteristica= DoubleVar()
 caracteristica.set(1)
     
@@ -79,8 +79,9 @@ def getchoice():
 x=2
 y=5
 z=2
+#nombre, masa, carga
 for name, mode,extra in TIP:#es para asignar valores a los botone[command es lo que hace cuando apachas el boton]
-    b= Radiobutton(raiz,text=name,font= "Cambria 12",value=mode,background="lightblue",indicator=0, width=15,variable=caracteristica,command=getchoice)
+    b= Radiobutton(raiz,text=name,font= "Cambria 12",value=mode,background="lightblue",width=15,indicator=0,variable=caracteristica,command=getchoice)
     b.grid(row=x,column=y)
     y=((-1)**z)+y#esto solo es configuracion de imagen, no afecta los valores que se tienen
     if y == 5:
@@ -97,6 +98,8 @@ def fin():
     
 aceptar = Button(raiz,text="Calcular",font="Cambria 14", command=fin)
 aceptar.grid(row=7, column=5)
-     
 
+Salida= Button(raiz,text="Salida",bg="pink",font= "Cambria 14",command= quit)
+Salida. grid(row=7, column=6)
+     
 raiz.mainloop()
