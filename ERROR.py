@@ -7,6 +7,7 @@ Carne: 19640
 
 from tkinter import *
 from tkinter import messagebox
+import ModuloMov as graph
 
 
 velocidad=0
@@ -16,12 +17,13 @@ carga=0
 angulo=0
 verticalI=0
 placa=0
+aceleracion=0
 
 def particulas(m,c):
-    print(str(m))
-    print(str(c))
-    m= masa
-    c=carga
+    global masa
+    global carga
+    masa=m
+    carga=c
 ##velocidad, Intensidad
 def validateVI_float(V,I,elevadoI, elevadoV,ang,plac):
     new_value = V.get()
@@ -50,12 +52,17 @@ def validateVI_float(V,I,elevadoI, elevadoV,ang,plac):
     
 def luz():
     if velocidad<=(10**8):
-        print(velocidad)
         return(True)
     else:
         messagebox.showinfo(title="Cuidado", message="La velocidad no puede ser mayor que la velocidad luz")
         return(False)
     
+def graficar():
+    if luz() == True:
+        global aceleracion
+        aceleracion=graph.aceleracionElec(masa, carga,Intensidad)
+        graph.LagraFica(aceleracion,velocidad,angulo)
+        
 def Edata(IC):
     global verticalI
     verticalI=IC
