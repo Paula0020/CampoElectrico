@@ -33,7 +33,7 @@ def validateVI_float(V,I,elevadoI, elevadoV,ang,plac):
     try:
         new_value == float(new_value)
         ElevaV == float(ElevaV)   
-        new_value2== float(new_value2)
+        new_value2 == float(new_value2)
         ElevaI == float(ElevaI)
         Al == float(Al)
         pla == float(pla)
@@ -53,7 +53,7 @@ def luz():
         print(velocidad)
         return(True)
     else:
-        messagebox.showinfo(title="Cuidado", message="La velocidad no puede ser mayor que la luz")
+        messagebox.showinfo(title="Cuidado", message="La velocidad no puede ser mayor que la velocidad luz")
         return(False)
     
 def Edata(IC):
