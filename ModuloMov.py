@@ -84,4 +84,3 @@ def LagraFica(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
 
 #LagraFica()
 
-LagraFica()
