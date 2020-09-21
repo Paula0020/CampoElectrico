@@ -92,9 +92,8 @@ def fin():
     fin= Label(raiz,text="Resultado", font= "Cambria 15")
     fin.grid(row=10, column=2, columnspan=4)
     validateVI_float(entrada2,entrada,diez1,diez,diez2,long)
-    luz()
     Edata(vertical.get())
-    print("Resultado")
+    graficar()
     
 aceptar = Button(raiz,text="Calcular",font="Cambria 14", command=fin)
 aceptar.grid(row=7, column=5)
