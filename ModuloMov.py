@@ -17,13 +17,9 @@ def aceleracionElec(ParticulaMasa, carga, campo):
     return acelera
 
 def LagraFica(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
-    scene2 = canvas(title='Charged Particle in Electric Field', width=1000, height=800, center=vector(0, 0, 0),
+    scene = canvas(title='Charged Particle in Electric Field', width=1000, height=800, center=vector(0, 0, 0),
                     align="left",
                     background=vector(1, 1, 1))
-    Grafica1 = graph(width=800, height=400, align="left", title='Movimiento de la Particula', xtitle='Eje X (m)',
-                     ytitle='Eje y (m)', foreground=color.black, background=color.white)
-
-    Graph_MovElec = gcurve(graph=Grafica1, color=color.blue)
 
     AceleracionElectrica = -ACELERACIONELECTRICA  # 9.8  # Aqui cabal se pone el valor de la aceleracion
     initialVelocity = VELCOIDAD  # 12# Aqui cabal se pone el valor de la rapidez
@@ -35,36 +31,28 @@ def LagraFica(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
     # label1 = label(pos=vec(1, 0.7, 0), text='Current velocity vx: ')
     # label2 = label(pos=vec(1, 0.6, 0), text='Current velocity vy: ')
     label3 = label(pos=vec(0, 0, 0), text='Distance: ')
+    label4 = label(pos=vec(0, (initialVelocity ** (2) * sin(Angle * pi / 180) ** (2)) / (2 * abs(AceleracionElectrica)), 0),text='Altura Maxima: ')
     # label4 = label(pos=vec(1, -0.6, 0), text='Time: ')
     # label5 = label(pos=vec(1, -0.5, 0), text='Angle: ')
 
     t = 0
-    dt = 0.0000000002
+    dt = 0.000000001#0.000000002
     
     gravity = vector(0, AceleracionElectrica * dt, 0)
     Particlev = vector(initialVelocity * cos(Angle * pi / 180), initialVelocity
                        * sin(Angle * pi / 180), 0)
-    Ejex = 0
-    Ejey = 0
-    j = 0
+    MaximumHeight = (initialVelocity ** (2) * sin(Angle * pi / 180) ** (2)) / (2 * abs(AceleracionElectrica))
+    ElVerdaderoMaximumHeight = float("{:.6f}".format(MaximumHeight))
+
     while True:
         rate(300)
         Particlev = Particlev + gravity
         particle.pos += Particlev * dt
         velocity = str(Particlev)
         position = str(particle.pos)
-        x = (position.split(',')[0])[1:-1]
         y = (position.split(',')[1])[1:-1]
-        masY = float(y)
         vx = (velocity.split(',')[0])[1:-1]
         vy = (velocity.split(',')[1])[1:-1]
-        Ejex += initialVelocity * cos(Angle * pi / 180) * dt
-        Ejey += initialVelocity * sin(Angle * pi / 180) * dt
-        yy = 5
-        j += 1
-        Graph_MovElec.plot(Ejex, masY)
-        # Graph_MovElec.plot(xx,yy)
-        # breaks loop when ball hits the ground
 
         if float(y) <= 0:
             angle = degrees(atan(abs(float(vy) / float(vx))))
@@ -76,6 +64,8 @@ def LagraFica(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
 
             label3.text = 'Distance: ' + (position.split(',')[0])[1:-1] \
                           + ' meter'
+            label4.text = 'Altura Maxima: ' + str(ElVerdaderoMaximumHeight) + ' meter'
+
 
             print('Angle at impact:', angle)
             break
