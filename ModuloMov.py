@@ -95,7 +95,7 @@ def LagraFica(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
     plt.figure()
 
     tmax = ((2 * velocidad) * np.sin(theta)) / abs(aceleracionElectrica)#valor abs porque el tiempo siempre es+
-    Tiempo = tmax * np.linspace(0, 1, 100)[:, None]
+    Tiempo = tmax * np.linspace(0, 1, 100)#[:, None]
     x = ((velocidad * Tiempo) * np.cos(theta))
     y = ((velocidad * Tiempo) * np.sin(theta)) + ((0.5 * aceleracionElectrica) * (Tiempo ** 2))
 
