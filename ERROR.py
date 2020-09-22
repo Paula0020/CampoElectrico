@@ -9,7 +9,6 @@ from tkinter import *
 from tkinter import messagebox
 import ModuloMov as graph
 
-
 velocidad=0
 Intensidad=0
 masa=0
@@ -57,16 +56,19 @@ def luz():
         messagebox.showinfo(title="Cuidado", message="La velocidad no puede ser mayor que la velocidad luz")
         return(False)
     
+def Edata(IC):
+    global Intensidad
+    Intensidad= IC*Intensidad
+    
 def graficar():
     if luz() == True:
         global aceleracion
         aceleracion=graph.aceleracionElec(masa, carga,Intensidad)
         graph.LagraFica(aceleracion,velocidad,angulo)
-        print(aceleracion)
+        graph.LaAnimacion(aceleracion,velocidad,angulo)
+        #S.control(aceleracion, velocidad)
         
-def Edata(IC):
-    global Intensidad
-    Intensidad= IC*Intensidad
+
 
     
 
