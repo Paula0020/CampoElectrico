@@ -6,6 +6,8 @@ Carne: 19640
 """
 from vpython import *
 from math import sin, cos, atan, degrees
+import numpy as np
+import matplotlib.pyplot as plt
 
 from matplotlib.pyplot import box
 from numpy import rate
@@ -16,11 +18,10 @@ def aceleracionElec(ParticulaMasa, carga, campo):
     acelera = (carga*campo)/ParticulaMasa
     return acelera
 
-def LagraFica(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
+def LaAnimacion(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
     scene = canvas(title='Charged Particle in Electric Field', width=1000, height=800, center=vector(0, 0, 0),
                     align="left",
                     background=vector(1, 1, 1))
-    #HOLA
 
     i = 1
     AceleracionElectrica = -ACELERACIONELECTRICA  # 9.8  # Aqui cabal se pone el valor de la aceleracion
@@ -30,16 +31,8 @@ def LagraFica(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
     ParaElDefVeloc = abs(initialVelocity)
     ElDefDefinitivo = ParaElDefVeloc-ParaElDefACE
     ElquesiEs = abs(ElDefDefinitivo)
-    if ElquesiEs >1.0E18:
-        dt = 0.000000000000000005
-    elif ElquesiEs >1.0E18:
-        dt = 0.00000000000000001
-    elif ElquesiEs >1.0E17:
-        dt = 0.0000000000000001
-    elif ElquesiEs > 1.0E14:
-        dt = 0.00000000001
-    elif ElquesiEs > 1.0E13:
-        dt = 0.0000000000001
+    if ElquesiEs > 1.0E13:
+        dt = 0.000000000001
     elif ElquesiEs >10.0E11:
         dt = 0.0000000000001
     elif ElquesiEs > 1.0E10:
@@ -49,7 +42,7 @@ def LagraFica(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
     # TamañoDePlaca = 50  # Aqui cabala se pone el valor que el usuario ingreso
     # TamañoDePlacaE = box(pos=vector(TamañoDePlaca / 2, 0, 0), size=vector(TamañoDePlaca, 0.10, 0), color=color.blue)
 
-    particle = sphere(pos=vector(0, 0, 0), radius=0.000000000002, color=color.blue, make_trail=True)
+    particle = sphere(pos=vector(0, 0, 0), radius=0.00000002, color=color.blue, make_trail=True)
     # label1 = label(pos=vec(1, 0.7, 0), text='Current velocity vx: ')
     # label2 = label(pos=vec(1, 0.6, 0), text='Current velocity vy: ')
     label3 = label(pos=vec(0, 0, 0), text='Distance: ')
@@ -93,6 +86,24 @@ def LagraFica(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
             print('Angle at impact:', angle)
             break
     t += dt
+
+def LagraFica(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
+    velocidad = VELCOIDAD
+    aceleracionElectrica = ACELERACIONELECTRICA
+
+    theta = (ANGULO / 180) * np.pi
+    plt.figure()
+
+    tmax = ((2 * velocidad) * np.sin(theta)) / aceleracionElectrica
+    Tiempo = tmax * np.linspace(0, 1, 100)[:, None]
+
+    x = ((velocidad * Tiempo) * np.cos(theta))
+    y = ((velocidad * Tiempo) * np.sin(theta)) - ((0.5 * aceleracionElectrica) * (Tiempo ** 2))
+
+    plt.plot(x, y)  # plot each dataset: columns of x and columns of y
+    # plt.ylim([0,35])
+    plt.show()
+    print(tmax)
 
 
 #LagraFica()
