@@ -98,7 +98,7 @@ def fin():
 aceptar = Button(raiz,text="Calcular",font="Cambria 14", command=fin)
 aceptar.grid(row=7, column=5)
 
-Salida= Button(raiz,text="Salida",bg="pink",font= "Cambria 14",command= quit)
+Salida= Button(raiz,text="Salida",bg="pink",font= "Cambria 14",command=quit)
 Salida. grid(row=7, column=6)
      
 raiz.mainloop()

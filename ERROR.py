@@ -18,6 +18,7 @@ angulo=0
 placa=0
 aceleracion=0
 
+
 def particulas(m,c):
     global masa
     global carga
@@ -61,6 +62,7 @@ def graficar():
         global aceleracion
         aceleracion=graph.aceleracionElec(masa, carga,Intensidad)
         graph.LagraFica(aceleracion,velocidad,angulo)
+        print(aceleracion)
         
 def Edata(IC):
     global Intensidad
