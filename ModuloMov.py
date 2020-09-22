@@ -94,11 +94,10 @@ def LagraFica(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
     theta = (ANGULO / 180) * np.pi
     plt.figure()
 
-    tmax = ((2 * velocidad) * np.sin(theta)) / aceleracionElectrica
+    tmax = ((2 * velocidad) * np.sin(theta)) / abs(aceleracionElectrica)#valor abs porque el tiempo siempre es+
     Tiempo = tmax * np.linspace(0, 1, 100)[:, None]
-
     x = ((velocidad * Tiempo) * np.cos(theta))
-    y = ((velocidad * Tiempo) * np.sin(theta)) - ((0.5 * aceleracionElectrica) * (Tiempo ** 2))
+    y = ((velocidad * Tiempo) * np.sin(theta)) + ((0.5 * aceleracionElectrica) * (Tiempo ** 2))
 
     plt.plot(x, y)  # plot each dataset: columns of x and columns of y
     # plt.ylim([0,35])
