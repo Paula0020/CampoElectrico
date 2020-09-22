@@ -18,7 +18,7 @@ Bienvenida.grid(row=0, column=1,columnspan=6)
 carga=0
 masa=0
 
-#INTENSIDAD
+#INTENSIDAD______________________
 center = LabelFrame(raiz,bd=4,width=150, height=250,padx=3, pady=3).grid(row=1,column=1,rowspan=6)
 label= Label(raiz,center,text="Intesidad de campo", font= "Cambria 12")
 label.grid(row=1,column=1)
@@ -28,14 +28,13 @@ Elevado1=Label(raiz,center,text="x10^ (N/C)", font= "Cambria 13")#Elevado
 Elevado1.grid(row=3,column=1)
 diez1= Entry(raiz,center,width=10, font= "Cambria 12")#texto
 diez1.grid(row=4,column=1)
-
 vertical= DoubleVar()##VALOR IMPORTANTE
 vertical.set(1)    
 a= Radiobutton(raiz,center,text="j",font= "Cambria 12",value=1,variable=vertical)
 a.grid(row=5,column=1)
 a= Radiobutton(raiz,center,text="-j",font= "Cambria 12",value=-1,variable=vertical)
-a.grid(row=6,column=1)
-#VELOCIDAD
+a.grid(row=6,column=1)#__________________________
+#VELOCIDAD________________________________________----
 F = LabelFrame(raiz,bd=4,width=180, height=250,padx=3, pady=3).grid(row=1,column=3,rowspan=6)
 label2= Label(raiz,F,text="Velocidad de particula", font= "Cambria 12")#magnitud
 label2.grid(row=1,column=3)
@@ -48,11 +47,11 @@ diez.grid(row=4,column=3)
 Angle=Label(raiz,F,text="Coloque el ángulo en grados:", font= "Cambria 10")#Elevado
 Angle.grid(row=5,column=3)
 diez2= Entry(raiz,F,width=10, font= "Cambria 12")#texto
-diez2.grid(row=6,column=3)
-##PLACA
+diez2.grid(row=6,column=3)#_________________________
+##PLACA__________________________________-
 placa=Label(raiz,F,text="Tamaño de placa(m):", font= "Cambria 11").grid(row=7,column=1)
 long= Entry(raiz,F,width=10, font= "Cambria 12")
-long.grid(row=8,column=1)
+long.grid(row=8,column=1)#______________________________
 ##TIPO
 label3= Label(raiz,text="Tipo de particula", font= "Cambria 15")
 label3.grid(row=1, column=5, columnspan=4)
@@ -79,7 +78,7 @@ def getchoice():
 x=2
 y=5
 z=2
-#nombre, masa, carga
+#nombre, masa, carga del las cantidades que estan arriba
 for name, mode,extra in TIP:#es para asignar valores a los botone[command es lo que hace cuando apachas el boton]
     b= Radiobutton(raiz,text=name,font= "Cambria 12",value=mode,background="lightblue",width=15,indicator=0,variable=caracteristica,command=getchoice)
     b.grid(row=x,column=y)
@@ -87,7 +86,7 @@ for name, mode,extra in TIP:#es para asignar valores a los botone[command es lo 
     if y == 5:
         x=x+1
     z=z+1
-    
+#Funcion que define que hace el boton de terminar
 def fin():
     fin= Label(raiz,text="Resultado", font= "Cambria 15")
     fin.grid(row=10, column=2, columnspan=4)
