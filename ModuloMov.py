@@ -18,92 +18,68 @@ def aceleracionElec(ParticulaMasa, carga, campo):
     acelera = (carga*campo)/ParticulaMasa
     return acelera
 
-def LaAnimacion(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
-    scene = canvas(title='Charged Particle in Electric Field', width=1000, height=800, center=vector(0, 0, 0),
-                    align="left",
-                    background=vector(1, 1, 1))
 
-    i = 1
-    AceleracionElectrica = -ACELERACIONELECTRICA  # 9.8  # Aqui cabal se pone el valor de la aceleracion
-    initialVelocity = VELCOIDAD  # 12# Aqui cabal se pone el valor de la rapidez
-    Angle = ANGULO  # Aqui cabal se pone el valor del angulo
-    ParaElDefACE = abs(AceleracionElectrica)
-    ParaElDefVeloc = abs(initialVelocity)
-    ElDefDefinitivo = ParaElDefVeloc-ParaElDefACE
-    ElquesiEs = abs(ElDefDefinitivo)
-    if ElquesiEs > 1.0E13:
-        dt = 0.000000000001
-    elif ElquesiEs >10.0E11:
-        dt = 0.0000000000001
-    elif ElquesiEs > 1.0E10:
-        dt = 0.0000001
+def LagraFica(LAVELOCIDAD, ACELERACIONELEC, ANGULOO, PLACAA):
+
+    velocidad = LAVELOCIDAD
+    aceleracionElectrica = ACELERACIONELEC
+    angulo = ANGULOO
+    placa = PLACAA
+
+    def AceleracionNegativa(VELOCIDAD, ANGULO, ACELERACION, PLACA):
+        velocidad = VELOCIDAD
+        aceleracionElectrica = abs(ACELERACION)
+        PlaacassE = PLACA
+        theta = (ANGULO / 180) * np.pi
+        plt.figure()
+        tmax = ((2 * velocidad) * np.sin(theta)) / aceleracionElectrica
+        tmaxPlacaE = (PlaacassE) / (velocidad * np.cos(theta))
+        if tmax > tmaxPlacaE:
+            Eltiempo = tmaxPlacaE
+            printD = PlaacassE / 2
+        else:
+            Eltiempo = tmax
+            printD = ((velocidad ** (2) * np.sin(2 * theta)) / aceleracionElectrica) / 2
+        PrintiTiempo = float("{:e}".format(Eltiempo))
+        Tiempo = Eltiempo * np.linspace(0, 1, 100)[:, None]
+
+        x = ((velocidad * Tiempo) * np.cos(theta))
+        y = ((velocidad * Tiempo) * np.sin(theta)) - ((0.5 * aceleracionElectrica) * (Tiempo ** 2))
+        plt.xlabel("desplazamiento en el eje X (m)")
+        plt.ylabel("desplazamiento en el eje y (m)")
+        plt.title("Movimiento de la Particula en el Campo Electrico")
+        plt.grid(b=None, which='major', axis='both')
+        plt.grid(color='k', linestyle='--', linewidth=0.5)
+        plt.plot(x, y, linewidth=1)
+        plt.annotate("Tiempo Total = " + str(PrintiTiempo) + "seg", (printD, 0))
+        plt.show()
+        print(Eltiempo)
+
+    def AceleracionPositiva(VELOCIDAD, ANGULO, ACELERACION, PLACA):
+        velocidad = VELOCIDAD
+        aceleracionElectrica = abs(ACELERACION)
+        PlaacassE = PLACA
+        theta = (ANGULO / 180) * np.pi
+        plt.figure()
+        tmaxPlacaE = (PlaacassE) / (velocidad * np.cos(theta))
+        PrintiTiempo = float("{:e}".format(tmaxPlacaE))
+        printD = PlaacassE / 2
+        Tiempo = tmaxPlacaE * np.linspace(0, 1, 100)[:, None]
+        x = ((velocidad * Tiempo) * np.cos(theta))
+        y = ((velocidad * Tiempo) * np.sin(theta)) + ((0.5 * aceleracionElectrica) * (Tiempo ** 2))
+        plt.xlabel("desplazamiento en el eje X (m)")
+        plt.ylabel("desplazamiento en el eje y (m)")
+        plt.title("Movimiento de la Particula en el Campo Electrico")
+        plt.grid(b=None, which='major', axis='both')
+        plt.grid(color='k', linestyle='--', linewidth=0.5)
+        plt.plot(x, y, linewidth=1)
+        plt.annotate("Tiempo Total = " + str(PrintiTiempo) + "seg", (printD, 0))
+        plt.show()
+
+    if aceleracionElectrica > 0:
+        AceleracionPositiva(velocidad, angulo, aceleracionElectrica, placa)
     else:
-        dt = 0.000000001
-    # TamañoDePlaca = 50  # Aqui cabala se pone el valor que el usuario ingreso
-    # TamañoDePlacaE = box(pos=vector(TamañoDePlaca / 2, 0, 0), size=vector(TamañoDePlaca, 0.10, 0), color=color.blue)
-
-    particle = sphere(pos=vector(0, 0, 0), radius=0.00000002, color=color.blue, make_trail=True)
-    # label1 = label(pos=vec(1, 0.7, 0), text='Current velocity vx: ')
-    # label2 = label(pos=vec(1, 0.6, 0), text='Current velocity vy: ')
-    label3 = label(pos=vec(0, 0, 0), text='Distance: ')
-    label4 = label(pos=vec(0, (initialVelocity ** (2) * sin(Angle * pi / 180) ** (2)) / (2 * abs(AceleracionElectrica)), 0),text='Altura Maxima: ')
-    # label4 = label(pos=vec(1, -0.6, 0), text='Time: ')
-    # label5 = label(pos=vec(1, -0.5, 0), text='Angle: ')
-
-    t = 0
-    #dt = 0.0000000000001#0.000000001
-    i +=1
-    #El 0.0000000000001
-    gravity = vector(0, AceleracionElectrica * dt, 0)
-    Particlev = vector(initialVelocity * cos(Angle * pi / 180), initialVelocity
-                       * sin(Angle * pi / 180), 0)
-    MaximumHeight = (initialVelocity ** (2) * sin(Angle * pi / 180) ** (2)) / (2 * abs(AceleracionElectrica))
-    ElVerdaderoMaximumHeight = float("{:.6f}".format(MaximumHeight))
-
-    while True:
-        rate(300)
-        Particlev = Particlev + gravity
-        particle.pos += Particlev * dt
-        velocity = str(Particlev)
-        position = str(particle.pos)
-        y = (position.split(',')[1])[1:-1]
-        vx = (velocity.split(',')[0])[1:-1]
-        vy = (velocity.split(',')[1])[1:-1]
-
-        if float(y) <= 0:
-            angle = degrees(atan(abs(float(vy) / float(vx))))
-            t = format(t, '.3f')
-            angle = format(angle, '.3f')
-
-            print('Position x =', position.split(',')[0], 'meter, time ='
-                  , t, 's')
-
-            label3.text = 'Distance: ' + (position.split(',')[0])[1:-1] \
-                          + ' meter'
-            label4.text = 'Altura Maxima: ' + str(ElVerdaderoMaximumHeight) + ' meter'
-
-
-            print('Angle at impact:', angle)
-            break
-    t += dt
-
-def LagraFica(ACELERACIONELECTRICA, VELCOIDAD, ANGULO):
-    velocidad = VELCOIDAD
-    aceleracionElectrica = ACELERACIONELECTRICA
-
-    theta = (ANGULO / 180) * np.pi
-    plt.figure()
-
-    tmax = ((2 * velocidad) * np.sin(theta)) / abs(aceleracionElectrica)#valor abs porque el tiempo siempre es+
-    Tiempo = tmax * np.linspace(0, 1, 100)#[:, None]
-    x = ((velocidad * Tiempo) * np.cos(theta))
-    y = ((velocidad * Tiempo) * np.sin(theta)) + ((0.5 * aceleracionElectrica) * (Tiempo ** 2))
-
-    plt.plot(x, y)  # plot each dataset: columns of x and columns of y
-    # plt.ylim([0,35])
-    plt.show()
-    print(tmax)
-
+        AceleracionNegativa(velocidad, angulo, aceleracionElectrica, placa)
 
 #LagraFica()
 
