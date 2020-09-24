@@ -14,18 +14,18 @@ from numpy import rate
 
 from vpython import *
 
+placaend=0
+
 def aceleracionElec(ParticulaMasa, carga, campo):
     acelera = (carga*campo)/ParticulaMasa
     return acelera
 
 
 def LagraFica(LAVELOCIDAD, ACELERACIONELEC, ANGULOO, PLACAA):
-
     velocidad = LAVELOCIDAD
     aceleracionElectrica = ACELERACIONELEC
     angulo = ANGULOO
     placa = PLACAA
-
     def AceleracionNegativa(VELOCIDAD, ANGULO, ACELERACION, PLACA):
         velocidad = VELOCIDAD
         aceleracionElectrica = abs(ACELERACION)
@@ -45,6 +45,8 @@ def LagraFica(LAVELOCIDAD, ACELERACIONELEC, ANGULOO, PLACAA):
 
         x = ((velocidad * Tiempo) * np.cos(theta))
         y = ((velocidad * Tiempo) * np.sin(theta)) - ((0.5 * aceleracionElectrica) * (Tiempo ** 2))
+        last_index = len(y)
+        print(last_index)
         plt.xlabel("desplazamiento en el eje X (m)")
         plt.ylabel("desplazamiento en el eje y (m)")
         plt.title("Movimiento de la Particula en el Campo Electrico")
