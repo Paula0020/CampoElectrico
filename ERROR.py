@@ -64,8 +64,8 @@ def graficar():
     if luz() == True:
         global aceleracion
         aceleracion=graph.aceleracionElec(masa, carga,Intensidad)
-        graph.LagraFica(aceleracion,velocidad,angulo)
-        graph.LaAnimacion(aceleracion,velocidad,angulo)
+        graph.LagraFica(velocidad,aceleracion,angulo, placa)
+        #graph.LaAnimacion(aceleracion,velocidad,angulo)
         #S.control(aceleracion, velocidad)
         
 
