@@ -68,6 +68,8 @@ def graficar():
         global aceleracion
         aceleracion=graph.aceleracionElec(masa, carga,Intensidad)
         graph.LagraFica(velocidad,aceleracion,angulo,placa)
+
+        
         
 
 
