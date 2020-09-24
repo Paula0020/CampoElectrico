@@ -39,7 +39,7 @@ def validateVI_float(V,I,elevadoI, elevadoV,ang,plac):
         Al == float(Al)
         pla == float(pla)
     except:
-        messagebox.showinfo(title="Cuidado", message="Datos no válidos")
+        messagebox.showinfo(title="Cuidado", message="Datos no válidos. Ingrese solo datos númericos.")
     global velocidad
     global Intensidad
     global angulo
@@ -50,11 +50,14 @@ def validateVI_float(V,I,elevadoI, elevadoV,ang,plac):
     placa =float(pla)
     
 def luz():
-    if velocidad<=(10**8):
+    if velocidad<=(10**8) and angulo<=360:
         return(True)
     else:
-        messagebox.showinfo(title="Cuidado", message="La velocidad no puede ser mayor que la velocidad luz")
+        if velocidad>=(10**8) or angulo >= 360:
+            messagebox.showinfo(title="Cuidado", message="La velocidad no puede ser mayor que la velocidad luz o su angulo es mayor a 360. Revise su entrada por favor.")
         return(False)
+        
+    
     
 def Edata(IC):
     global Intensidad
@@ -64,9 +67,7 @@ def graficar():
     if luz() == True:
         global aceleracion
         aceleracion=graph.aceleracionElec(masa, carga,Intensidad)
-        graph.LagraFica(aceleracion,velocidad,angulo)
-        graph.LaAnimacion(aceleracion,velocidad,angulo)
-        #S.control(aceleracion, velocidad)
+        graph.LagraFica(velocidad,aceleracion,angulo,placa)
         
 
 
