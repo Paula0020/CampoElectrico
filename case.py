@@ -20,7 +20,7 @@ masa=0
 
 #INTENSIDAD______________________
 center = LabelFrame(raiz,bd=4,width=150, height=250,padx=3, pady=3).grid(row=1,column=1,rowspan=6)
-label= Label(raiz,center,text="Intesidad de campo", font= "Cambria 12")
+label= Label(raiz,center,text="Intensidad de campo", font= "Cambria 12")
 label.grid(row=1,column=1)
 entrada= Entry(raiz,center,width=10, font= "Cambria 12")
 entrada.grid(row=2,column=1)
@@ -57,7 +57,7 @@ label3= Label(raiz,text="Tipo de particula", font= "Cambria 15")
 label3.grid(row=1, column=5, columnspan=4)
      # electrón, positrón, protón, neutrón, partícula alfa, núcleo de deuterio, muón
 TIP= [
-     ("Proton",1.673E-27,1.6E-19),
+    ("Proton",1.673E-27,1.6E-19),
     ("Electron",9.11E-31,-1.6E-19),
     ("Neutron",1.675E-27,0),
     ("Partícula Alfa",6.64E-27,3.2E-19),
@@ -65,6 +65,8 @@ TIP= [
     ("Tau", 3.16E-27,-1.6E-19),
     ("Núcleo de Tritio",5.027E-27,1.6E-19),
     ("Positron",9.1E-31,1.6E-19),
+    ("Núcleo de Calcio",6.68E-26,6.408E-18),
+    ("Núcleo de Hierro",9.352E-26,4.1652E-18),
     ]
 
 caracteristica= DoubleVar()
@@ -88,16 +90,14 @@ for name, mode,extra in TIP:#es para asignar valores a los botone[command es lo 
     z=z+1
 #Funcion que define que hace el boton de terminar
 def fin():
-    fin= Label(raiz,text="Resultado", font= "Cambria 15")
-    fin.grid(row=10, column=2, columnspan=4)
     validateVI_float(entrada2,entrada,diez1,diez,diez2,long)
     Edata(vertical.get())
     graficar()
     
-aceptar = Button(raiz,text="Calcular",font="Cambria 14", command=fin)
-aceptar.grid(row=7, column=5)
+aceptar = Button(raiz,text="Mostrar simulacion",font="Cambria 14", command=fin)
+aceptar.grid(row=8, column=5)
 
-Salida= Button(raiz,text="Salida",bg="pink",font= "Cambria 14",command=quit)
-Salida. grid(row=7, column=6)
+Salida= Button(raiz,text="Salida",fg="red",font= "Cambria 14",command=quit)
+Salida. grid(row=8, column=6)
      
 raiz.mainloop()
